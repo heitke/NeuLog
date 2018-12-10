@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuLog.Service", "NeuLog.Service\NeuLog.Service.csproj", "{3C5170FA-EA96-4CBD-BA1A-494CB37D8FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuLog.UnitTests", "NeuLog.UnitTests\NeuLog.UnitTests.csproj", "{776A02B3-DEE1-49C9-AB81-A1D9632481F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuLog.Barometer", "NeuLog.Barometer\NeuLog.Barometer.csproj", "{B153C6AA-657C-4AB6-9A44-B2E59E38724E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuLog.Storage", "NeuLog.Storage\NeuLog.Storage.csproj", "{3704C251-7C46-4D9A-AF0F-46851216BC67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuLog.Logic", "NeuLog.Logic\NeuLog.Logic.csproj", "{9D7BD63B-9997-46D1-8703-DA69CC1BC13B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C5170FA-EA96-4CBD-BA1A-494CB37D8FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5170FA-EA96-4CBD-BA1A-494CB37D8FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5170FA-EA96-4CBD-BA1A-494CB37D8FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5170FA-EA96-4CBD-BA1A-494CB37D8FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{776A02B3-DEE1-49C9-AB81-A1D9632481F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{776A02B3-DEE1-49C9-AB81-A1D9632481F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{776A02B3-DEE1-49C9-AB81-A1D9632481F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{776A02B3-DEE1-49C9-AB81-A1D9632481F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B153C6AA-657C-4AB6-9A44-B2E59E38724E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B153C6AA-657C-4AB6-9A44-B2E59E38724E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B153C6AA-657C-4AB6-9A44-B2E59E38724E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B153C6AA-657C-4AB6-9A44-B2E59E38724E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3704C251-7C46-4D9A-AF0F-46851216BC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3704C251-7C46-4D9A-AF0F-46851216BC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3704C251-7C46-4D9A-AF0F-46851216BC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3704C251-7C46-4D9A-AF0F-46851216BC67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D7BD63B-9997-46D1-8703-DA69CC1BC13B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D7BD63B-9997-46D1-8703-DA69CC1BC13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D7BD63B-9997-46D1-8703-DA69CC1BC13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D7BD63B-9997-46D1-8703-DA69CC1BC13B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD21A4AC-1CCE-4E4A-ADF7-1E6B72414122}
+	EndGlobalSection
+EndGlobal
