@@ -20,7 +20,7 @@ namespace NeuLog.Logic
         }
         public async Task GetAndStoreBarometer()
         {             
-            var currentValue = await Barometer.GetBarometerValue();
+            var currentValue = Barometer.GetBarometerValue();
 
             await Storage.StoreBarometerValue(currentValue);
 
