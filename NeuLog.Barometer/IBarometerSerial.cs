@@ -8,7 +8,7 @@ namespace NeuLog.Barometer
 {
     public interface IBarometerSerial
     {
-        Task<bool> IsDeviceActive();
-        Task<decimal> GetBarometerValue();
+        bool IsDeviceActive();
+        decimal GetBarometerValue();
     }
 }

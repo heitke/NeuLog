@@ -24,18 +24,23 @@ namespace NeuLog.Barometer
         }
 
 
-        public async Task<bool> IsDeviceActive()
+        public bool IsDeviceActive()
         {            
             try
             {
                 Open();
 
-                await Port.BaseStream.WriteAsync(Encoding.ASCII.GetBytes("UNeuLog!"), 0, 8);
+                Port.Write(Encoding.ASCII.GetBytes("UNeuLog!"), 0, 8);
 
-                byte[] result = new byte[8];
-                int bytesRead = 0;
-                while (bytesRead < 8)
-                    bytesRead += await Port.BaseStream.ReadAsync(result, 0, 8 - bytesRead);
+                for (int i = 0; i < 5; i++)
+                {
+                    if (Port.BytesToRead >= 7) break;
+                    System.Threading.Thread.Sleep(1000);
+                }
+                if (Port.BytesToRead < 7) throw new Exception("Timeout waiting for response");
+
+                byte[] result = new byte[7];
+                Port.Read(result, 0, 7);
 
                 var resultString = Encoding.Default.GetString(result);
 
@@ -49,20 +54,26 @@ namespace NeuLog.Barometer
             }
         }
 
-        public async Task<decimal> GetBarometerValue()
+        public decimal GetBarometerValue()
         {            
             try
             {
                 Open();
 
-                await Port.BaseStream.WriteAsync(new byte[] { 0x55, 0x12, 0x01, 0x31, 0, 0, 0, 0x99 }, 0, 8);
+                Port.Write(new byte[] { 0x55, 0x12, 0x01, 0x31, 0, 0, 0, 0x99 }, 0, 8);
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (Port.BytesToRead >= 8) break;
+                    System.Threading.Thread.Sleep(1000);
+                }
+
+                if (Port.BytesToRead < 8) throw new Exception("Timeout waiting for response");
 
                 byte[] result = new byte[8];
-                int bytesRead = 0;
-                while (bytesRead < 8)
-                    bytesRead += await Port.BaseStream.ReadAsync(result, 0, 8 - bytesRead);
+                Port.Read(result, 0, 8);
 
-                return ConvertBytesToVarometer(result);
+                return ConvertBytesToBarometer(result);
             }
             finally
             {
@@ -70,10 +81,18 @@ namespace NeuLog.Barometer
             }
         }
 
-        private decimal ConvertBytesToVarometer(byte[] data)
+        public decimal ConvertBytesToBarometer(byte[] data)
         {
-            return (decimal)data[4] + (((decimal)data[6]) / 100M);
+            var hundreds = ((int)data[4]) & 0x0F;
+            var tens = (int)data[5];
+            var dec = data[6] & 0x0F;
+
+            var result = hundreds * 100 + tens + (decimal)dec / 10;
+
+            return result;
+
         }
+
 
         private void Close()
         {

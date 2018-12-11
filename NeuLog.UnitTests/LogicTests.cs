@@ -21,7 +21,7 @@ namespace NeuLog.UnitTests
         {
             var barometer = new Mock<IBarometerSerial>();
             barometer.Setup(m => m.GetBarometerValue())
-                .ReturnsAsync(101.1M);
+                .Returns(101.1M);
 
             decimal storedValue = 0;
             var storage = new Mock<INeuLogStorage>();

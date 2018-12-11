@@ -10,26 +10,26 @@ namespace NeuLog.UnitTests
     public class BarometerTests
     {
         [TestMethod]
-        public async Task IsDeviceListening_IntegrationTest()
+        public void IsDeviceListening_IntegrationTest()
         {
             var settings = new Settings();
             
             using (var barometer = new BarometerSerial(settings.serialPort))
             {
-                var result = await barometer.IsDeviceActive();
+                var result = barometer.IsDeviceActive();
 
                 Assert.AreEqual(true, result);
             }
         }
 
         [TestMethod]
-        public async Task GetBarometer_IntegrationTest()
+        public void GetBarometer_IntegrationTest()
         {
             var settings = new Settings();
 
             using (var barometer = new BarometerSerial(settings.serialPort))
             {
-                var result = await barometer.GetBarometerValue();
+                var result = barometer.GetBarometerValue();
 
                 Assert.IsTrue(result > 0);
 
@@ -40,10 +40,28 @@ namespace NeuLog.UnitTests
 
             using (var barometer = new BarometerSerial(settings.serialPort))
             {
-                var result = await barometer.GetBarometerValue();
+                var result = barometer.GetBarometerValue();
 
                 Assert.IsTrue(result > 0);
             }
+        }
+
+        [TestMethod]
+        public void ConvertBytesToBarometer_Test()
+        {
+            var settings = new Settings();
+
+            using (var barometer = new BarometerSerial(settings.serialPort))
+            {
+                var result = barometer.ConvertBytesToBarometer(new byte[] { 0x55, 0x12, 0x01, 0x31, 0xD1, 0x02, 0xA0, 0x0C });
+
+                Assert.AreEqual(102.0M, result);
+
+                var result2 = barometer.ConvertBytesToBarometer(new byte[] { 0x55, 0x12, 0x01, 0x31, 0xD1, 0x01, 0xA9, 0x0C });
+
+                Assert.AreEqual(101.9M, result2);
+            }
+            
         }
     }
 }
